@@ -15,6 +15,13 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
+    /**
+     * Spring Security 필수 메소드 구현
+     *
+     * @param email 이메일
+     * @return UserDetails
+     * @throws UsernameNotFoundException 유저가 없을 때 예외 발생
+     */
     @Override // 기본 반환타입은 UserDetails 이지만 User가 UserDatails를 상속받았으므로 자동으로 다운캐스팅
     public User loadUserByUsername(String email) throws UsernameNotFoundException {
         return userRepository.findByEmail(email)
